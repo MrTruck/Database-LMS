@@ -1,32 +1,37 @@
 import streamlit as st
-from auth import verify_pass
+from auth import verify_pass, initialize_role_id
 
 
 st.set_page_config(page_title="Login", page_icon="🔐")
 
+# Available session states
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
-    st.session_state.username = ""
+    st.session_state.username = None
+    st.session_state.student_id = None
+    st.session_state.instructor_id = None
+    st.session_state.selected_course = None
+
 
 def login():
-    st.title("🔐LMS User Login")
+    st.title("🔐 LMS User Login")
 
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-
-    if st.button("Login"):
-        if verify_pass(username, password):
-            st.session_state.logged_in = True
-            st.session_state.username = username
-            st.success("Login successful!")
-            st.rerun()
-        else:
-            st.error("Invalid username or password.")
+    with st.form("login_form"):
+        email = st.text_input("Email")
+        password = st.text_input("Password", type="password")
+        
+        if st.form_submit_button("Login"):
+            if verify_pass(email, password):
+                st.success("Login successful!")
+            else:
+                st.error("Invalid email or password.")
 
 def logout():
     st.session_state.logged_in = False   # student/instructor/False
     st.session_state.username = None
     st.session_state.user_id = None
+    st.session_state.instructor_id = None
+    st.session_state.student_id = None
     st.rerun()
 
 # Page Logic
