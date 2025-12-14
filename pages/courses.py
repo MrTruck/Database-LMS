@@ -8,33 +8,39 @@ from helper import heading
 login_check()
 heading()
 
+st.set_page_config(initial_sidebar_state=None, page_title="Courses", page_icon="📚")  # configure page title and icon
+
 
 def course_card(title, instructor, course_id, instructorID):
-    # Include an HTML link-button that navigates by setting a query parameter
+    # Return just the HTML card without button
     return f"""
-    <div style="
-        padding: 10px 0;
-        border-radius: 6px;
-        margin-bottom: 10px;
-        width: 100%;
-        height:150px;
-        border: solid 1px #fff;
-        padding: 15px;
-    ">
-        <h5 style="margin: 0 0 5px 0;">{title}</h4>
+    <style>
+        .course-card-{course_id} {{
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 180px;
+            border: solid 1px #fff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }}
+        .course-card-{course_id}:hover {{
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(255,255,255,0.2);
+        }}
+    </style>
+    <div class="course-card-{course_id}">
+        <span style="color: #d0daf5; padding:0; font-size: 16px;">
+            Course {course_id}
+        </span>
+        <h5 style="margin: 0 0 5px 0;">{title}</h5>
         <div style="
             font-size:14px;
             color:#fff;
             font-family:monospace;
         ">
-            {instructor} <span style="color:#17fc03;">[iID {instructorID}]</span>
-        </div>
-        <div style="margin-top:10px;">
-            <a href="?selected_course={course_id}" target="_self" style="text-decoration:none;">
-                <button style="background:#007bff;color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;">
-                    Check course
-                </button>
-            </a>
+            {instructor} <span style="color:#d0daf5;">(iID {instructorID})</span>
         </div>
     </div>
     """
@@ -86,6 +92,33 @@ def get_courses():
     return courses
 
 
+def clickable_course_card(course, col):
+    with col:
+        container = st.container()
+
+        with container:
+            st.markdown(
+                course_card(
+                    course["courseName"],
+                    course["instructorName"],
+                    course["courseID"],
+                    course["instructorID"],
+                ),
+                unsafe_allow_html=True,
+            )
+
+            # Invisible full-size button
+            clicked = st.button(
+                "Check Course",
+                key=f"course_{course['courseID']}",
+                use_container_width=True,
+            )
+
+        if clicked:
+            st.session_state.selected_course = course["courseID"]
+            st.switch_page("pages/course.py")
+
+
 # If a course was selected via query param, navigate to its page
 params = st.query_params
 if "selected_course" in params:
@@ -102,40 +135,18 @@ current_col = 0
 conn = get_connection()
 cursor = conn.cursor()
 
-
 if st.session_state.logged_in == "student":
-    student_courses = get_student_courses(st.session_state.student_id)
-    for course in student_courses:
-        button_key = f"check_course_{course['courseID']}"
-
-        if current_col == 0:
-            with col1:
-                st.markdown(course_card(course["courseName"], course["instructorName"], course["courseID"], course["instructorID"]),
-                            unsafe_allow_html=True)
-            current_col = 1
-        else:
-            with col2:
-                st.markdown(course_card(course["courseName"], course["instructorName"], course["courseID"], course["instructorID"]),
-                            unsafe_allow_html=True)
-            current_col = 0
-
-
-elif st.session_state.logged_in == "instructor":
+    courses = get_student_courses(st.session_state.student_id)
+else:
     courses = get_courses()
 
-    for course in courses:
-        button_key = f"check_course_{course['courseID']}"
-
-        if current_col == 0:
-            with col1:
-                st.markdown(course_card(course["courseName"], course["instructorName"], course["courseID"], course["instructorID"]),
-                            unsafe_allow_html=True)
-            current_col = 1
-        else:
-            with col2:
-                st.markdown(course_card(course["courseName"], course["instructorName"], course["courseID"], course["instructorID"]),
-                            unsafe_allow_html=True)
-            current_col = 0
+for course in courses:
+    if current_col == 0:
+        clickable_course_card(course, col1)
+        current_col = 1
+    else:
+        clickable_course_card(course, col2)
+        current_col = 0
 
 
 cursor.close()

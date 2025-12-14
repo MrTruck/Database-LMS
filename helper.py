@@ -2,7 +2,7 @@ import streamlit as st
 
 
 def heading():
-    # Render heading with a bottom border using HTML so we can style it
+    """Render heading of user name & student/instructor id"""
     if (st.session_state.logged_in == "student"):
         id_display = str(st.session_state.student_id)
     else:
@@ -18,3 +18,13 @@ def heading():
 
     st.markdown(html, unsafe_allow_html=True)
 
+def course_header(course_id, course_name, instructor_name, instructorID):
+    """
+        Render heading for individual courses
+    """
+    st.markdown(f'''<span style="color: #fff; padding:0; font-size: 18px; margin: 0;">
+            Course {course_id}
+        </span>''', unsafe_allow_html=True)
+    st.title(course_name)
+    st.caption(f"Instructor: {instructor_name} (ID {instructorID})")
+    st.divider()

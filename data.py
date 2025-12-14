@@ -1,6 +1,7 @@
 import mysql.connector
 
 
+# SQL connector METHOD
 def get_connection():
     return mysql.connector.connect(
         host="localhost",
@@ -8,5 +9,3 @@ def get_connection():
         password="william",
         database="lms_database"
     )
-
-fake_courses = {}
