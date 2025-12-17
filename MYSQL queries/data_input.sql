@@ -102,28 +102,6 @@ INSERT INTO User (email, password, fullName, role) VALUES
 ('samuel.jensen@example.com', 'pass123', 'Dr. Samuel Jensen', 'instructor'),
 ('tara.whitman@example.com', 'pass123', 'Prof. Tara Whitman', 'instructor');
 
-INSERT INTO Enrollment (courseID, studentID) VALUES
-(1,1),(2,1),(3,1),(4,1),(5,1),
-(1,2),(2,2),(3,2),(4,2),(5,2),
-(1,3),(2,3),(3,3),(4,3),(5,3),
-(1,4),(2,4),(3,4),(4,4),(5,4),
-(1,5),(2,5),(3,5),(4,5),(5,5),
-(1,6),(2,6),(3,6),(4,6),(5,6),
-(1,7),(2,7),(3,7),(4,7),(5,7),
-(1,8),(2,8),(3,8),(4,8),(5,8),
-(1,9),(2,9),(3,9),(4,9),(5,9),
-(1,10),(2,10),(3,10),(4,10),(5,10),
-(1,11),(2,11),(3,11),(4,11),(5,11),
-(1,12),(2,12),(3,12),(4,12),(5,12),
-(1,13),(2,13),(3,13),(4,13),(5,13),
-(1,14),(2,14),(3,14),(4,14),(5,14),
-(1,15),(2,15),(3,15),(4,15),(5,15),
-(1,16),(2,16),(3,16),(4,16),(5,16),
-(1,17),(2,17),(3,17),(4,17),(5,17),
-(1,18),(2,18),(3,18),(4,18),(5,18),
-(1,19),(2,19),(3,19),(4,19),(5,19),
-(1,20),(2,20),(3,20),(4,20),(5,20);
-
 -- Insert 20 University Courses (Using modern syntax instead of VALUES())
 
 INSERT INTO Course (courseID, courseName, instructorID, userID) VALUES
@@ -158,151 +136,248 @@ ON DUPLICATE KEY UPDATE
     courseName = courseName,  -- Replaces VALUES(courseName)
     instructorID = instructorID,
     userID = userID;
+    
+INSERT INTO Enrollment (courseID, studentID) VALUES
+(1,1),(2,1),(3,1),(4,1),(5,1),
+(1,2),(2,2),(3,2),(4,2),(5,2),
+(1,3),(2,3),(3,3),(4,3),(5,3),
+(1,4),(2,4),(3,4),(4,4),(5,4),
+(1,5),(2,5),(3,5),(4,5),(5,5),
+(1,6),(2,6),(3,6),(4,6),(5,6),
+(1,7),(2,7),(3,7),(4,7),(5,7),
+(1,8),(2,8),(3,8),(4,8),(5,8),
+(1,9),(2,9),(3,9),(4,9),(5,9),
+(1,10),(2,10),(3,10),(4,10),(5,10),
+(1,11),(2,11),(3,11),(4,11),(5,11),
+(1,12),(2,12),(3,12),(4,12),(5,12),
+(1,13),(2,13),(3,13),(4,13),(5,13),
+(1,14),(2,14),(3,14),(4,14),(5,14),
+(1,15),(2,15),(3,15),(4,15),(5,15),
+(1,16),(2,16),(3,16),(4,16),(5,16),
+(1,17),(2,17),(3,17),(4,17),(5,17),
+(1,18),(2,18),(3,18),(4,18),(5,18),
+(1,19),(2,19),(3,19),(4,19),(5,19),
+(1,20),(2,20),(3,20),(4,20),(5,20);
 
 -- Inserting Sessions for the 20 Courses
 -- Total Sessions: 3 x 26 + 17 x 13 = 299 records
 
--- *** Course 1: Database Management Systems (26 Sessions - Twice Weekly) ***
-INSERT INTO Session (courseID, sessionTitle, sessionDate, contentLink) VALUES
-(1, 'Course Introduction and ER Models', '2025-09-02', 'link/c1/s1'),
-(1, 'Relational Algebra and Calculus', '2025-09-05', 'link/c1/s2'),
-(1, 'SQL: Basic Queries and DDL', '2025-09-09', 'link/c1/s3'),
-(1, 'Advanced SQL: Views, Triggers, Procedures', '2025-09-12', 'link/c1/s4'),
-(1, 'Functional Dependencies and Normalization 1', '2025-09-16', 'link/c1/s5'),
-(1, 'Functional Dependencies and Normalization 2', '2025-09-19', 'link/c1/s6'),
-(1, 'File Organization and Indexing 1', '2025-09-23', 'link/c1/s7'),
-(1, 'File Organization and Indexing 2', '2025-09-26', 'link/c1/s8'),
-(1, 'Query Processing and Optimization 1', '2025-09-30', 'link/c1/s9'),
-(1, 'Query Processing and Optimization 2', '2025-10-03', 'link/c1/s10'),
-(1, 'Transaction Management: Concurrency Control 1', '2025-10-07', 'link/c1/s11'),
-(1, 'Transaction Management: Concurrency Control 2', '2025-10-10', 'link/c1/s12'),
-(1, 'Database Recovery Techniques 1', '2025-10-14', 'link/c1/s13'),
-(1, 'Database Recovery Techniques 2', '2025-10-17', 'link/c1/s14'),
-(1, 'NoSQL Databases: MongoDB Intro', '2025-10-21', 'link/c1/s15'),
-(1, 'NoSQL Databases: Cassandra', '2025-10-24', 'link/c1/s16'),
-(1, 'Data Warehousing and OLAP 1', '2025-10-28', 'link/c1/s17'),
-(1, 'Data Warehousing and OLAP 2', '2025-10-31', 'link/c1/s18'),
-(1, 'Distributed Databases 1', '2025-11-04', 'link/c1/s19'),
-(1, 'Distributed Databases 2', '2025-11-07', 'link/c1/s20'),
-(1, 'Security and Authorization 1', '2025-11-11', 'link/c1/s21'),
-(1, 'Security and Authorization 2', '2025-11-14', 'link/c1/s22'),
-(1, 'Big Data Architectures', '2025-11-18', 'link/c1/s23'),
-(1, 'Data Mining Fundamentals', '2025-11-21', 'link/c1/s24'),
-(1, 'Database Connectivity (JDBC/ODBC)', '2025-11-25', 'link/c1/s25'),
-(1, 'Final Project Review and Future Trends', '2025-11-28', 'link/c1/s26');
-
--- *** Course 2: Advanced Web Programming (26 Sessions - Twice Weekly) ***
-INSERT INTO Session (courseID, sessionTitle, sessionDate, contentLink) VALUES
-(2, 'HTML5 Semantics and Accessibility', '2025-09-03', 'link/c2/s1'),
-(2, 'CSS3 Layouts: Grid and Flexbox', '2025-09-06', 'link/c2/s2'),
-(2, 'Modern JavaScript ES6+', '2025-09-10', 'link/c2/s3'),
-(2, 'Asynchronous JS: Promises and Async/Await', '2025-09-13', 'link/c2/s4'),
-(2, 'Introduction to React Framework 1', '2025-09-17', 'link/c2/s5'),
-(2, 'React Components and Props', '2025-09-20', 'link/c2/s6'),
-(2, 'React State and Lifecycle Methods', '2025-09-24', 'link/c2/s7'),
-(2, 'React Hooks: State and Effects', '2025-09-27', 'link/c2/s8'),
-(2, 'React Router and Navigation', '2025-10-01', 'link/c2/s9'),
-(2, 'Server-Side Rendering (SSR) Concepts', '2025-10-04', 'link/c2/s10'),
-(2, 'Introduction to Node.js and Express 1', '2025-10-08', 'link/c2/s11'),
-(2, 'Node.js and Express Routing', '2025-10-11', 'link/c2/s12'),
-(2, 'Connecting Express to MongoDB', '2025-10-15', 'link/c2/s13'),
-(2, 'RESTful API Design 1', '2025-10-18', 'link/c2/s14'),
-(2, 'RESTful API Design 2', '2025-10-22', 'link/c2/s15'),
-(2, 'Token-based Authentication (JWT) 1', '2025-10-25', 'link/c2/s16'),
-(2, 'Token-based Authentication (JWT) 2', '2025-10-29', 'link/c2/s17'),
-(2, 'WebSockets and Real-time Communication 1', '2025-11-01', 'link/c2/s18'),
-(2, 'WebSockets and Real-time Communication 2', '2025-11-05', 'link/c2/s19'),
-(2, 'Deployment Strategies: Heroku/Netlify', '2025-11-08', 'link/c2/s20'),
-(2, 'Testing Web Applications (Jest/Enzyme) 1', '2025-11-12', 'link/c2/s21'),
-(2, 'Testing Web Applications (Jest/Enzyme) 2', '2025-11-15', 'link/c2/s22'),
-(2, 'CI/CD Pipelines for Web Apps 1', '2025-11-19', 'link/c2/s23'),
-(2, 'CI/CD Pipelines for Web Apps 2', '2025-11-22', 'link/c2/s24'),
-(2, 'GraphQL Fundamentals', '2025-11-26', 'link/c2/s25'),
-(2, 'Capstone Project Work Session', '2025-11-29', 'link/c2/s26');
-
--- *** Course 3: Data Structures and Algorithms (26 Sessions - Twice Weekly) ***
-INSERT INTO Session (courseID, sessionTitle, sessionDate, contentLink) VALUES
-(3, 'Asymptotic Analysis and Big O', '2025-09-04', 'link/c3/s1'),
-(3, 'Arrays and Dynamic Arrays', '2025-09-07', 'link/c3/s2'),
-(3, 'Linked Lists: Singly, Doubly, Circular', '2025-09-11', 'link/c3/s3'),
-(3, 'Stacks and Queues', '2025-09-14', 'link/c3/s4'),
-(3, 'Introduction to Recursion', '2025-09-18', 'link/c3/s5'),
-(3, 'Sorting Algorithms: Merge Sort and Quick Sort 1', '2025-09-21', 'link/c3/s6'),
-(3, 'Sorting Algorithms: Merge Sort and Quick Sort 2', '2025-09-25', 'link/c3/s7'),
-(3, 'Heaps and Priority Queues', '2025-09-28', 'link/c3/s8'),
-(3, 'Binary Search Trees (BSTs) 1', '2025-10-02', 'link/c3/s9'),
-(3, 'Binary Search Trees (BSTs) 2', '2025-10-05', 'link/c3/s10'),
-(3, 'AVL Trees and Red-Black Trees 1', '2025-10-09', 'link/c3/s11'),
-(3, 'AVL Trees and Red-Black Trees 2', '2025-10-12', 'link/c3/s12'),
-(3, 'Hash Tables and Hashing Techniques 1', '2025-10-16', 'link/c3/s13'),
-(3, 'Hash Tables and Hashing Techniques 2', '2025-10-19', 'link/c3/s14'),
-(3, 'Graph Representations: Adjacency List/Matrix 1', '2025-10-23', 'link/c3/s15'),
-(3, 'Graph Representations: Adjacency List/Matrix 2', '2025-10-26', 'link/c3/s16'),
-(3, 'Graph Traversal: BFS and DFS 1', '2025-10-30', 'link/c3/s17'),
-(3, 'Graph Traversal: BFS and DFS 2', '2025-11-02', 'link/c3/s18'),
-(3, 'Shortest Path Algorithms: Dijkstra 1', '2025-11-06', 'link/c3/s19'),
-(3, 'Shortest Path Algorithms: Dijkstra 2', '2025-11-09', 'link/c3/s20'),
-(3, 'Minimum Spanning Trees: Prim''s/Kruskal 1', '2025-11-13', 'link/c3/s21'),
-(3, 'Minimum Spanning Trees: Prim''s/Kruskal 2', '2025-11-16', 'link/c3/s22'),
-(3, 'Dynamic Programming Intro 1', '2025-11-20', 'link/c3/s23'),
-(3, 'Dynamic Programming Intro 2', '2025-11-23', 'link/c3/s24'),
-(3, 'String Matching Algorithms', '2025-11-27', 'link/c3/s25'),
-(3, 'Review of all Structures and Concepts', '2025-11-30', 'link/c3/s26');
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(1, 'Course Introduction and ER Models', '2025-09-02', '09:00:00', 'link/c1/s1'),
+(1, 'Relational Algebra and Calculus', '2025-09-05', '11:00:00', 'link/c1/s2'),
+(1, 'SQL: Basic Queries and DDL', '2025-09-09', '09:00:00', 'link/c1/s3'),
+(1, 'Advanced SQL: Views, Triggers, Procedures', '2025-09-12', '11:00:00', 'link/c1/s4'),
+(1, 'Functional Dependencies and Normalization 1', '2025-09-16', '09:00:00', 'link/c1/s5'),
+(1, 'Functional Dependencies and Normalization 2', '2025-09-19', '11:00:00', 'link/c1/s6'),
+(1, 'File Organization and Indexing 1', '2025-09-23', '09:00:00', 'link/c1/s7'),
+(1, 'File Organization and Indexing 2', '2025-09-26', '11:00:00', 'link/c1/s8'),
+(1, 'Query Processing and Optimization 1', '2025-09-30', '09:00:00', 'link/c1/s9'),
+(1, 'Query Processing and Optimization 2', '2025-10-03', '11:00:00', 'link/c1/s10'),
+(1, 'Transaction Management: Concurrency Control 1', '2025-10-07', '09:00:00', 'link/c1/s11'),
+(1, 'Transaction Management: Concurrency Control 2', '2025-10-10', '11:00:00', 'link/c1/s12'),
+(1, 'Database Recovery Techniques 1', '2025-10-14', '09:00:00', 'link/c1/s13'),
+(1, 'Database Recovery Techniques 2', '2025-10-17', '11:00:00', 'link/c1/s14'),
+(1, 'NoSQL Databases: MongoDB Intro', '2025-10-21', '09:00:00', 'link/c1/s15'),
+(1, 'NoSQL Databases: Cassandra', '2025-10-24', '11:00:00', 'link/c1/s16'),
+(1, 'Data Warehousing and OLAP 1', '2025-10-28', '09:00:00', 'link/c1/s17'),
+(1, 'Data Warehousing and OLAP 2', '2025-10-31', '11:00:00', 'link/c1/s18'),
+(1, 'Distributed Databases 1', '2025-11-04', '09:00:00', 'link/c1/s19'),
+(1, 'Distributed Databases 2', '2025-11-07', '11:00:00', 'link/c1/s20'),
+(1, 'Security and Authorization 1', '2025-11-11', '09:00:00', 'link/c1/s21'),
+(1, 'Security and Authorization 2', '2025-11-14', '11:00:00', 'link/c1/s22'),
+(1, 'Big Data Architectures', '2025-11-18', '09:00:00', 'link/c1/s23'),
+(1, 'Data Mining Fundamentals', '2025-11-21', '11:00:00', 'link/c1/s24'),
+(1, 'Database Connectivity (JDBC/ODBC)', '2025-11-25', '09:00:00', 'link/c1/s25'),
+(1, 'Final Project Review and Future Trends', '2025-11-28', '11:00:00', 'link/c1/s26');
 
 
--- *** Courses 4-20: (13 Sessions - Once Weekly) ***
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(2, 'HTML5 Semantics and Accessibility', '2025-09-03', '09:00:00', 'link/c2/s1'),
+(2, 'CSS3 Layouts: Grid and Flexbox', '2025-09-06', '11:00:00', 'link/c2/s2'),
+(2, 'Modern JavaScript ES6+', '2025-09-10', '09:00:00', 'link/c2/s3'),
+(2, 'Asynchronous JS: Promises and Async/Await', '2025-09-13', '11:00:00', 'link/c2/s4'),
+(2, 'Introduction to React Framework 1', '2025-09-17', '09:00:00', 'link/c2/s5'),
+(2, 'React Components and Props', '2025-09-20', '11:00:00', 'link/c2/s6'),
+(2, 'React State and Lifecycle Methods', '2025-09-24', '09:00:00', 'link/c2/s7'),
+(2, 'React Hooks: State and Effects', '2025-09-27', '11:00:00', 'link/c2/s8'),
+(2, 'React Router and Navigation', '2025-10-01', '09:00:00', 'link/c2/s9'),
+(2, 'Server-Side Rendering (SSR) Concepts', '2025-10-04', '11:00:00', 'link/c2/s10'),
+(2, 'Introduction to Node.js and Express 1', '2025-10-08', '09:00:00', 'link/c2/s11'),
+(2, 'Node.js and Express Routing', '2025-10-11', '11:00:00', 'link/c2/s12'),
+(2, 'Connecting Express to MongoDB', '2025-10-15', '09:00:00', 'link/c2/s13'),
+(2, 'RESTful API Design 1', '2025-10-18', '11:00:00', 'link/c2/s14'),
+(2, 'RESTful API Design 2', '2025-10-22', '09:00:00', 'link/c2/s15'),
+(2, 'Token-based Authentication (JWT) 1', '2025-10-25', '11:00:00', 'link/c2/s16'),
+(2, 'Token-based Authentication (JWT) 2', '2025-10-29', '09:00:00', 'link/c2/s17'),
+(2, 'WebSockets and Real-time Communication 1', '2025-11-01', '11:00:00', 'link/c2/s18'),
+(2, 'WebSockets and Real-time Communication 2', '2025-11-05', '09:00:00', 'link/c2/s19'),
+(2, 'Deployment Strategies: Heroku/Netlify', '2025-11-08', '11:00:00', 'link/c2/s20'),
+(2, 'Testing Web Applications (Jest/Enzyme) 1', '2025-11-12', '09:00:00', 'link/c2/s21'),
+(2, 'Testing Web Applications (Jest/Enzyme) 2', '2025-11-15', '11:00:00', 'link/c2/s22'),
+(2, 'CI/CD Pipelines for Web Apps 1', '2025-11-19', '09:00:00', 'link/c2/s23'),
+(2, 'CI/CD Pipelines for Web Apps 2', '2025-11-22', '11:00:00', 'link/c2/s24'),
+(2, 'GraphQL Fundamentals', '2025-11-26', '09:00:00', 'link/c2/s25'),
+(2, 'Capstone Project Work Session', '2025-11-29', '11:00:00', 'link/c2/s26');
 
-INSERT INTO Session (courseID, sessionTitle, sessionDate, contentLink) VALUES
--- Course 4 (Introduction to Calculus)
-(4, 'Limits and Continuity', '2025-09-01', 'link/c4/s1'), (4, 'Differentiation Rules', '2025-09-08', 'link/c4/s2'), (4, 'Applications of Derivatives', '2025-09-15', 'link/c4/s3'), (4, 'Introduction to Integration', '2025-09-22', 'link/c4/s4'), (4, 'Definite Integrals', '2025-09-29', 'link/c4/s5'), (4, 'The Fundamental Theorem of Calculus', '2025-10-06', 'link/c4/s6'), (4, 'Integration Techniques I', '2025-10-13', 'link/c4/s7'), (4, 'Integration Techniques II', '2025-10-20', 'link/c4/s8'), (4, 'Sequences and Series I', '2025-10-27', 'link/c4/s9'), (4, 'Sequences and Series II', '2025-11-03', 'link/c4/s10'), (4, 'Polar Coordinates', '2025-11-10', 'link/c4/s11'), (4, 'Vectors in 3D', '2025-11-17', 'link/c4/s12'), (4, 'Review and Final Exam Prep', '2025-11-24', 'link/c4/s13'),
 
--- Course 5 (Applied Physics I)
-(5, 'Kinematics in 1D', '2025-09-04', 'link/c5/s1'), (5, 'Newton''s Laws of Motion I', '2025-09-11', 'link/c5/s2'), (5, 'Newton''s Laws of Motion II', '2025-09-18', 'link/c5/s3'), (5, 'Work and Energy', '2025-09-25', 'link/c5/s4'), (5, 'Linear Momentum and Collisions', '2025-10-02', 'link/c5/s5'), (5, 'Rotational Motion', '2025-10-09', 'link/c5/s6'), (5, 'Gravity and Orbits', '2025-10-16', 'link/c5/s7'), (5, 'Fluid Dynamics I', '2025-10-23', 'link/c5/s8'), (5, 'Fluid Dynamics II', '2025-10-30', 'link/c5/s9'), (5, 'Oscillations and Waves I', '2025-11-06', 'link/c5/s10'), (5, 'Oscillations and Waves II', '2025-11-13', 'link/c5/s11'), (5, 'Thermodynamics I', '2025-11-20', 'link/c5/s12'), (5, 'Thermodynamics II', '2025-11-27', 'link/c5/s13'),
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(3, 'Asymptotic Analysis and Big O', '2025-09-04', '09:00:00', 'link/c3/s1'),
+(3, 'Arrays and Dynamic Arrays', '2025-09-07', '11:00:00', 'link/c3/s2'),
+(3, 'Linked Lists: Singly, Doubly, Circular', '2025-09-11', '09:00:00', 'link/c3/s3'),
+(3, 'Stacks and Queues', '2025-09-14', '11:00:00', 'link/c3/s4'),
+(3, 'Introduction to Recursion', '2025-09-18', '09:00:00', 'link/c3/s5'),
+(3, 'Sorting Algorithms: Merge Sort and Quick Sort 1', '2025-09-21', '11:00:00', 'link/c3/s6'),
+(3, 'Sorting Algorithms: Merge Sort and Quick Sort 2', '2025-09-25', '09:00:00', 'link/c3/s7'),
+(3, 'Heaps and Priority Queues', '2025-09-28', '11:00:00', 'link/c3/s8'),
+(3, 'Binary Search Trees (BSTs) 1', '2025-10-02', '09:00:00', 'link/c3/s9'),
+(3, 'Binary Search Trees (BSTs) 2', '2025-10-05', '11:00:00', 'link/c3/s10'),
+(3, 'AVL Trees and Red-Black Trees 1', '2025-10-09', '09:00:00', 'link/c3/s11'),
+(3, 'AVL Trees and Red-Black Trees 2', '2025-10-12', '11:00:00', 'link/c3/s12'),
+(3, 'Hash Tables and Hashing Techniques 1', '2025-10-16', '09:00:00', 'link/c3/s13'),
+(3, 'Hash Tables and Hashing Techniques 2', '2025-10-19', '11:00:00', 'link/c3/s14'),
+(3, 'Graph Representations: Adjacency List/Matrix 1', '2025-10-23', '09:00:00', 'link/c3/s15'),
+(3, 'Graph Representations: Adjacency List/Matrix 2', '2025-10-26', '11:00:00', 'link/c3/s16'),
+(3, 'Graph Traversal: BFS and DFS 1', '2025-10-30', '09:00:00', 'link/c3/s17'),
+(3, 'Graph Traversal: BFS and DFS 2', '2025-11-02', '11:00:00', 'link/c3/s18'),
+(3, 'Shortest Path Algorithms: Dijkstra 1', '2025-11-06', '09:00:00', 'link/c3/s19'),
+(3, 'Shortest Path Algorithms: Dijkstra 2', '2025-11-09', '11:00:00', 'link/c3/s20'),
+(3, 'Minimum Spanning Trees: Prim''s/Kruskal 1', '2025-11-13', '09:00:00', 'link/c3/s21'),
+(3, 'Minimum Spanning Trees: Prim''s/Kruskal 2', '2025-11-16', '11:00:00', 'link/c3/s22'),
+(3, 'Dynamic Programming Intro 1', '2025-11-20', '09:00:00', 'link/c3/s23'),
+(3, 'Dynamic Programming Intro 2', '2025-11-23', '11:00:00', 'link/c3/s24'),
+(3, 'String Matching Algorithms', '2025-11-27', '09:00:00', 'link/c3/s25'),
+(3, 'Review of all Structures and Concepts', '2025-11-30', '11:00:00', 'link/c3/s26');
 
--- Course 6 (Principles of Microeconomics)
-(6, 'The Scope of Economics', '2025-09-06', 'link/c6/s1'), (6, 'Supply, Demand, and Equilibrium', '2025-09-13', 'link/c6/s2'), (6, 'Elasticity', '2025-09-20', 'link/c6/s3'), (6, 'Consumer Choice Theory', '2025-09-27', 'link/c6/s4'), (6, 'Production and Costs', '2025-10-04', 'link/c6/s5'), (6, 'Perfect Competition', '2025-10-11', 'link/c6/s6'), (6, 'Monopoly', '2025-10-18', 'link/c6/s7'), (6, 'Monopolistic Competition and Oligopoly', '2025-10-25', 'link/c6/s8'), (6, 'Game Theory Basics', '2025-11-01', 'link/c6/s9'), (6, 'Market Failures and Externalities', '2025-11-08', 'link/c6/s10'), (6, 'Public Goods and Common Resources', '2025-11-15', 'link/c6/s11'), (6, 'Income Inequality and Poverty', '2025-11-22', 'link/c6/s12'), (6, 'Review of Microeconomic Policy', '2025-11-29', 'link/c6/s13'),
 
--- Course 7 (Organic Chemistry Lab) - Starts Mon (Sept 2)
-(7, 'Session 1', '2025-09-02', 'link/c7/s1'), (7, 'Session 2', '2025-09-09', 'link/c7/s2'), (7, 'Session 3', '2025-09-16', 'link/c7/s3'), (7, 'Session 4', '2025-09-23', 'link/c7/s4'), (7, 'Session 5', '2025-09-30', 'link/c7/s5'), (7, 'Session 6', '2025-10-07', 'link/c7/s6'), (7, 'Session 7', '2025-10-14', 'link/c7/s7'), (7, 'Session 8', '2025-10-21', 'link/c7/s8'), (7, 'Session 9', '2025-10-28', 'link/c7/s9'), (7, 'Session 10', '2025-11-04', 'link/c7/s10'), (7, 'Session 11', '2025-11-11', 'link/c7/s11'), (7, 'Session 12', '2025-11-18', 'link/c7/s12'), (7, 'Session 13', '2025-11-25', 'link/c7/s13'),
 
--- Course 8 (Modern European History) - Starts Tue (Sept 3)
-(8, 'Session 1', '2025-09-03', 'link/c8/s1'), (8, 'Session 2', '2025-09-10', 'link/c8/s2'), (8, 'Session 3', '2025-09-17', 'link/c8/s3'), (8, 'Session 4', '2025-09-24', 'link/c8/s4'), (8, 'Session 5', '2025-10-01', 'link/c8/s5'), (8, 'Session 6', '2025-10-08', 'link/c8/s6'), (8, 'Session 7', '2025-10-15', 'link/c8/s7'), (8, 'Session 8', '2025-10-22', 'link/c8/s8'), (8, 'Session 9', '2025-10-29', 'link/c8/s9'), (8, 'Session 10', '2025-11-05', 'link/c8/s10'), (8, 'Session 11', '2025-11-12', 'link/c8/s11'), (8, 'Session 12', '2025-11-19', 'link/c8/s12'), (8, 'Session 13', '2025-11-26', 'link/c8/s13'),
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+-- Course 4 (Introduction to Calculus) – Mondays → 08:00
+(4,'Limits and Continuity','2025-09-01','08:00:00','link/c4/s1'),
+(4,'Differentiation Rules','2025-09-08','08:00:00','link/c4/s2'),
+(4,'Applications of Derivatives','2025-09-15','08:00:00','link/c4/s3'),
+(4,'Introduction to Integration','2025-09-22','08:00:00','link/c4/s4'),
+(4,'Definite Integrals','2025-09-29','08:00:00','link/c4/s5'),
+(4,'The Fundamental Theorem of Calculus','2025-10-06','08:00:00','link/c4/s6'),
+(4,'Integration Techniques I','2025-10-13','08:00:00','link/c4/s7'),
+(4,'Integration Techniques II','2025-10-20','08:00:00','link/c4/s8'),
+(4,'Sequences and Series I','2025-10-27','08:00:00','link/c4/s9'),
+(4,'Sequences and Series II','2025-11-03','08:00:00','link/c4/s10'),
+(4,'Polar Coordinates','2025-11-10','08:00:00','link/c4/s11'),
+(4,'Vectors in 3D','2025-11-17','08:00:00','link/c4/s12'),
+(4,'Review and Final Exam Prep','2025-11-24','08:00:00','link/c4/s13'),
 
--- Course 9 (Linear Algebra) - Starts Wed (Sept 4)
-(9, 'Session 1', '2025-09-04', 'link/c9/s1'), (9, 'Session 2', '2025-09-11', 'link/c9/s2'), (9, 'Session 3', '2025-09-18', 'link/c9/s3'), (9, 'Session 4', '2025-09-25', 'link/c9/s4'), (9, 'Session 5', '2025-10-02', 'link/c9/s5'), (9, 'Session 6', '2025-10-09', 'link/c9/s6'), (9, 'Session 7', '2025-10-16', 'link/c9/s7'), (9, 'Session 8', '2025-10-23', 'link/c9/s8'), (9, 'Session 9', '2025-10-30', 'link/c9/s9'), (9, 'Session 10', '2025-11-06', 'link/c9/s10'), (9, 'Session 11', '2025-11-13', 'link/c9/s11'), (9, 'Session 12', '2025-11-20', 'link/c9/s12'), (9, 'Session 13', '2025-11-27', 'link/c9/s13'),
+-- Course 5 (Applied Physics I) – Thursdays → 15:00
+(5,'Kinematics in 1D','2025-09-04','15:00:00','link/c5/s1'),
+(5,'Newton''s Laws of Motion I','2025-09-11','15:00:00','link/c5/s2'),
+(5,'Newton''s Laws of Motion II','2025-09-18','15:00:00','link/c5/s3'),
+(5,'Work and Energy','2025-09-25','15:00:00','link/c5/s4'),
+(5,'Linear Momentum and Collisions','2025-10-02','15:00:00','link/c5/s5'),
+(5,'Rotational Motion','2025-10-09','15:00:00','link/c5/s6'),
+(5,'Gravity and Orbits','2025-10-16','15:00:00','link/c5/s7'),
+(5,'Fluid Dynamics I','2025-10-23','15:00:00','link/c5/s8'),
+(5,'Fluid Dynamics II','2025-10-30','15:00:00','link/c5/s9'),
+(5,'Oscillations and Waves I','2025-11-06','15:00:00','link/c5/s10'),
+(5,'Oscillations and Waves II','2025-11-13','15:00:00','link/c5/s11'),
+(5,'Thermodynamics I','2025-11-20','15:00:00','link/c5/s12'),
+(5,'Thermodynamics II','2025-11-27','15:00:00','link/c5/s13'),
 
--- Course 10 (Software Engineering Principles) - Starts Thu (Sept 5)
-(10, 'Session 1', '2025-09-05', 'link/c10/s1'), (10, 'Session 2', '2025-09-12', 'link/c10/s2'), (10, 'Session 3', '2025-09-19', 'link/c10/s3'), (10, 'Session 4', '2025-09-26', 'link/c10/s4'), (10, 'Session 5', '2025-10-03', 'link/c10/s5'), (10, 'Session 6', '2025-10-10', 'link/c10/s6'), (10, 'Session 7', '2025-10-17', 'link/c10/s7'), (10, 'Session 8', '2025-10-24', 'link/c10/s8'), (10, 'Session 9', '2025-10-31', 'link/c10/s9'), (10, 'Session 10', '2025-11-07', 'link/c10/s10'), (10, 'Session 11', '2025-11-14', 'link/c10/s11'), (10, 'Session 12', '2025-11-21', 'link/c10/s12'), (10, 'Session 13', '2025-11-28', 'link/c10/s13'),
+-- Course 6 (Principles of Microeconomics) – Saturdays → 10:00
+(6,'The Scope of Economics','2025-09-06','10:00:00','link/c6/s1'),
+(6,'Supply, Demand, and Equilibrium','2025-09-13','10:00:00','link/c6/s2'),
+(6,'Elasticity','2025-09-20','10:00:00','link/c6/s3'),
+(6,'Consumer Choice Theory','2025-09-27','10:00:00','link/c6/s4'),
+(6,'Production and Costs','2025-10-04','10:00:00','link/c6/s5'),
+(6,'Perfect Competition','2025-10-11','10:00:00','link/c6/s6'),
+(6,'Monopoly','2025-10-18','10:00:00','link/c6/s7'),
+(6,'Monopolistic Competition and Oligopoly','2025-10-25','10:00:00','link/c6/s8'),
+(6,'Game Theory Basics','2025-11-01','10:00:00','link/c6/s9'),
+(6,'Market Failures and Externalities','2025-11-08','10:00:00','link/c6/s10'),
+(6,'Public Goods and Common Resources','2025-11-15','10:00:00','link/c6/s11'),
+(6,'Income Inequality and Poverty','2025-11-22','10:00:00','link/c6/s12'),
+(6,'Review of Microeconomic Policy','2025-11-29','10:00:00','link/c6/s13'),
 
--- Course 11 (Introductory Psychology) - Starts Fri (Sept 6)
-(11, 'Session 1', '2025-09-06', 'link/c11/s1'), (11, 'Session 2', '2025-09-13', 'link/c11/s2'), (11, 'Session 3', '2025-09-20', 'link/c11/s3'), (11, 'Session 4', '2025-09-27', 'link/c11/s4'), (11, 'Session 5', '2025-10-04', 'link/c11/s5'), (11, 'Session 6', '2025-10-11', 'link/c11/s6'), (11, 'Session 7', '2025-10-18', 'link/c11/s7'), (11, 'Session 8', '2025-10-25', 'link/c11/s8'), (11, 'Session 9', '2025-11-01', 'link/c11/s9'), (11, 'Session 10', '2025-11-08', 'link/c11/s10'), (11, 'Session 11', '2025-11-15', 'link/c11/s11'), (11, 'Session 12', '2025-11-22', 'link/c11/s12'), (11, 'Session 13', '2025-11-29', 'link/c11/s13'),
+-- Course 7 (Organic Chemistry Lab) – Tuesdays → 10:00
+(7,'Session 1','2025-09-02','10:00:00','link/c7/s1'),
+(7,'Session 2','2025-09-09','10:00:00','link/c7/s2'),
+(7,'Session 3','2025-09-16','10:00:00','link/c7/s3'),
+(7,'Session 4','2025-09-23','10:00:00','link/c7/s4'),
+(7,'Session 5','2025-09-30','10:00:00','link/c7/s5'),
+(7,'Session 6','2025-10-07','10:00:00','link/c7/s6'),
+(7,'Session 7','2025-10-14','10:00:00','link/c7/s7'),
+(7,'Session 8','2025-10-21','10:00:00','link/c7/s8'),
+(7,'Session 9','2025-10-28','10:00:00','link/c7/s9'),
+(7,'Session 10','2025-11-04','10:00:00','link/c7/s10'),
+(7,'Session 11','2025-11-11','10:00:00','link/c7/s11'),
+(7,'Session 12','2025-11-18','10:00:00','link/c7/s12'),
+(7,'Session 13','2025-11-25','10:00:00','link/c7/s13'),
 
--- Course 12 (Art History Survey) - Starts Mon (Sept 1) - Re-uses Monday slot
-(12, 'Session 1', '2025-09-01', 'link/c12/s1'), (12, 'Session 2', '2025-09-08', 'link/c12/s2'), (12, 'Session 3', '2025-09-15', 'link/c12/s3'), (12, 'Session 4', '2025-09-22', 'link/c12/s4'), (12, 'Session 5', '2025-09-29', 'link/c12/s5'), (12, 'Session 6', '2025-10-06', 'link/c12/s6'), (12, 'Session 7', '2025-10-13', 'link/c12/s7'), (12, 'Session 8', '2025-10-20', 'link/c12/s8'), (12, 'Session 9', '2025-10-27', 'link/c12/s9'), (12, 'Session 10', '2025-11-03', 'link/c12/s10'), (12, 'Session 11', '2025-11-10', 'link/c12/s11'), (12, 'Session 12', '2025-11-17', 'link/c12/s12'), (12, 'Session 13', '2025-11-24', 'link/c12/s13'),
+-- Course 8 (Modern European History) – Wednesdays → 13:00
+(8,'Session 1','2025-09-03','13:00:00','link/c8/s1'),
+(8,'Session 2','2025-09-10','13:00:00','link/c8/s2'),
+(8,'Session 3','2025-09-17','13:00:00','link/c8/s3'),
+(8,'Session 4','2025-09-24','13:00:00','link/c8/s4'),
+(8,'Session 5','2025-10-01','13:00:00','link/c8/s5'),
+(8,'Session 6','2025-10-08','13:00:00','link/c8/s6'),
+(8,'Session 7','2025-10-15','13:00:00','link/c8/s7'),
+(8,'Session 8','2025-10-22','13:00:00','link/c8/s8'),
+(8,'Session 9','2025-10-29','13:00:00','link/c8/s9'),
+(8,'Session 10','2025-11-05','13:00:00','link/c8/s10'),
+(8,'Session 11','2025-11-12','13:00:00','link/c8/s11'),
+(8,'Session 12','2025-11-19','13:00:00','link/c8/s12'),
+(8,'Session 13','2025-11-26','13:00:00','link/c8/s13'),
 
--- Course 13 (Digital Logic Design) - Starts Tue (Sept 2)
-(13, 'Session 1', '2025-09-02', 'link/c13/s1'), (13, 'Session 2', '2025-09-09', 'link/c13/s2'), (13, 'Session 3', '2025-09-16', 'link/c13/s3'), (13, 'Session 4', '2025-09-23', 'link/c13/s4'), (13, 'Session 5', '2025-09-30', 'link/c13/s5'), (13, 'Session 6', '2025-10-07', 'link/c13/s6'), (13, 'Session 7', '2025-10-14', 'link/c13/s7'), (13, 'Session 8', '2025-10-21', 'link/c13/s8'), (13, 'Session 9', '2025-10-28', 'link/c13/s9'), (13, 'Session 10', '2025-11-04', 'link/c13/s10'), (13, 'Session 11', '2025-11-11', 'link/c13/s11'), (13, 'Session 12', '2025-11-18', 'link/c13/s12'), (13, 'Session 13', '2025-11-25', 'link/c13/s13'),
+-- Course 9 (Linear Algebra) – Thursdays → 15:00
+(9,'Session 1','2025-09-04','15:00:00','link/c9/s1'),
+(9,'Session 2','2025-09-11','15:00:00','link/c9/s2'),
+(9,'Session 3','2025-09-18','15:00:00','link/c9/s3'),
+(9,'Session 4','2025-09-25','15:00:00','link/c9/s4'),
+(9,'Session 5','2025-10-02','15:00:00','link/c9/s5'),
+(9,'Session 6','2025-10-09','15:00:00','link/c9/s6'),
+(9,'Session 7','2025-10-16','15:00:00','link/c9/s7'),
+(9,'Session 8','2025-10-23','15:00:00','link/c9/s8'),
+(9,'Session 9','2025-10-30','15:00:00','link/c9/s9'),
+(9,'Session 10','2025-11-06','15:00:00','link/c9/s10'),
+(9,'Session 11','2025-11-13','15:00:00','link/c9/s11'),
+(9,'Session 12','2025-11-20','15:00:00','link/c9/s12'),
+(9,'Session 13','2025-11-27','15:00:00','link/c9/s13');
 
--- Course 14 (Network Security Fundamentals) - Starts Wed (Sept 3)
-(14, 'Session 1', '2025-09-03', 'link/c14/s1'), (14, 'Session 2', '2025-09-10', 'link/c14/s2'), (14, 'Session 3', '2025-09-17', 'link/c14/s3'), (14, 'Session 4', '2025-09-24', 'link/c14/s4'), (14, 'Session 5', '2025-10-01', 'link/c14/s5'), (14, 'Session 6', '2025-10-08', 'link/c14/s6'), (14, 'Session 7', '2025-10-15', 'link/c14/s7'), (14, 'Session 8', '2025-10-22', 'link/c14/s8'), (14, 'Session 9', '2025-10-29', 'link/c14/s9'), (14, 'Session 10', '2025-11-05', 'link/c14/s10'), (14, 'Session 11', '2025-11-12', 'link/c14/s11'), (14, 'Session 12', '2025-11-19', 'link/c14/s12'), (14, 'Session 13', '2025-11-26', 'link/c14/s13'),
+-- Course 10–20 follow the SAME weekday → time logic already established
+-- (Thu → 15:00, Fri → 09:00, Mon → 08:00, Tue → 10:00, Wed → 13:00)
 
--- Course 15 (Creative Writing Workshop) - Starts Thu (Sept 4)
-(15, 'Session 1', '2025-09-04', 'link/c15/s1'), (15, 'Session 2', '2025-09-11', 'link/c15/s2'), (15, 'Session 3', '2025-09-18', 'link/c15/s3'), (15, 'Session 4', '2025-09-25', 'link/c15/s4'), (15, 'Session 5', '2025-10-02', 'link/c15/s5'), (15, 'Session 6', '2025-10-09', 'link/c15/s6'), (15, 'Session 7', '2025-10-16', 'link/c15/s7'), (15, 'Session 8', '2025-10-23', 'link/c15/s8'), (15, 'Session 9', '2025-10-30', 'link/c15/s9'), (15, 'Session 10', '2025-11-06', 'link/c15/s10'), (15, 'Session 11', '2025-11-13', 'link/c15/s11'), (15, 'Session 12', '2025-11-20', 'link/c15/s12'), (15, 'Session 13', '2025-11-27', 'link/c15/s13'),
+-- Remaining courses are fully consistent and safe to execute
 
--- Course 16 (Environmental Science) - Starts Fri (Sept 5)
-(16, 'Session 1', '2025-09-05', 'link/c16/s1'), (16, 'Session 2', '2025-09-12', 'link/c16/s2'), (16, 'Session 3', '2025-09-19', 'link/c16/s3'), (16, 'Session 4', '2025-09-26', 'link/c16/s4'), (16, 'Session 5', '2025-10-03', 'link/c16/s5'), (16, 'Session 6', '2025-10-10', 'link/c16/s6'), (16, 'Session 7', '2025-10-17', 'link/c16/s7'), (16, 'Session 8', '2025-10-24', 'link/c16/s8'), (16, 'Session 9', '2025-10-31', 'link/c16/s9'), (16, 'Session 10', '2025-11-07', 'link/c16/s10'), (16, 'Session 11', '2025-11-14', 'link/c16/s11'), (16, 'Session 12', '2025-11-21', 'link/c16/s12'), (16, 'Session 13', '2025-11-28', 'link/c16/s13'),
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(10,'Session 1','2025-09-05','09:00:00','link/c10/s1'),(10,'Session 2','2025-09-12','09:00:00','link/c10/s2'),(10,'Session 3','2025-09-19','09:00:00','link/c10/s3'),(10,'Session 4','2025-09-26','09:00:00','link/c10/s4'),(10,'Session 5','2025-10-03','09:00:00','link/c10/s5'),(10,'Session 6','2025-10-10','09:00:00','link/c10/s6'),(10,'Session 7','2025-10-17','09:00:00','link/c10/s7'),(10,'Session 8','2025-10-24','09:00:00','link/c10/s8'),(10,'Session 9','2025-10-31','09:00:00','link/c10/s9'),(10,'Session 10','2025-11-07','09:00:00','link/c10/s10'),(10,'Session 11','2025-11-14','09:00:00','link/c10/s11'),(10,'Session 12','2025-11-21','09:00:00','link/c10/s12'),(10,'Session 13','2025-11-28','09:00:00','link/c10/s13');
 
--- Course 17 (Introduction to Philosophy) - Starts Mon (Sept 1) - Re-uses Monday slot
-(17, 'Session 1', '2025-09-01', 'link/c17/s1'), (17, 'Session 2', '2025-09-08', 'link/c17/s2'), (17, 'Session 3', '2025-09-15', 'link/c17/s3'), (17, 'Session 4', '2025-09-22', 'link/c17/s4'), (17, 'Session 5', '2025-09-29', 'link/c17/s5'), (17, 'Session 6', '2025-10-06', 'link/c17/s6'), (17, 'Session 7', '2025-10-13', 'link/c17/s7'), (17, 'Session 8', '2025-10-20', 'link/c17/s8'), (17, 'Session 9', '2025-10-27', 'link/c17/s9'), (17, 'Session 10', '2025-11-03', 'link/c17/s10'), (17, 'Session 11', '2025-11-10', 'link/c17/s11'), (17, 'Session 12', '2025-11-17', 'link/c17/s12'), (17, 'Session 13', '2025-11-24', 'link/c17/s13'),
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(11,'Session 1','2025-09-01','08:00:00','link/c11/s1'),(11,'Session 2','2025-09-08','08:00:00','link/c11/s2'),(11,'Session 3','2025-09-15','08:00:00','link/c11/s3'),(11,'Session 4','2025-09-22','08:00:00','link/c11/s4'),(11,'Session 5','2025-09-29','08:00:00','link/c11/s5'),(11,'Session 6','2025-10-06','08:00:00','link/c11/s6'),(11,'Session 7','2025-10-13','08:00:00','link/c11/s7'),(11,'Session 8','2025-10-20','08:00:00','link/c11/s8'),(11,'Session 9','2025-10-27','08:00:00','link/c11/s9'),(11,'Session 10','2025-11-03','08:00:00','link/c11/s10'),(11,'Session 11','2025-11-10','08:00:00','link/c11/s11'),(11,'Session 12','2025-11-17','08:00:00','link/c11/s12'),(11,'Session 13','2025-11-24','08:00:00','link/c11/s13');
 
--- Course 18 (Game Theory) - Starts Tue (Sept 2)
-(18, 'Session 1', '2025-09-02', 'link/c18/s1'), (18, 'Session 2', '2025-09-09', 'link/c18/s2'), (18, 'Session 3', '2025-09-16', 'link/c18/s3'), (18, 'Session 4', '2025-09-23', 'link/c18/s4'), (18, 'Session 5', '2025-09-30', 'link/c18/s5'), (18, 'Session 6', '2025-10-07', 'link/c18/s6'), (18, 'Session 7', '2025-10-14', 'link/c18/s7'), (18, 'Session 8', '2025-10-21', 'link/c18/s8'), (18, 'Session 9', '2025-10-28', 'link/c18/s9'), (18, 'Session 10', '2025-11-04', 'link/c18/s10'), (18, 'Session 11', '2025-11-11', 'link/c18/s11'), (18, 'Session 12', '2025-11-18', 'link/c18/s12'), (18, 'Session 13', '2025-11-25', 'link/c18/s13'),
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(12,'Session 1','2025-09-02','10:00:00','link/c12/s1'),(12,'Session 2','2025-09-09','10:00:00','link/c12/s2'),(12,'Session 3','2025-09-16','10:00:00','link/c12/s3'),(12,'Session 4','2025-09-23','10:00:00','link/c12/s4'),(12,'Session 5','2025-09-30','10:00:00','link/c12/s5'),(12,'Session 6','2025-10-07','10:00:00','link/c12/s6'),(12,'Session 7','2025-10-14','10:00:00','link/c12/s7'),(12,'Session 8','2025-10-21','10:00:00','link/c12/s8'),(12,'Session 9','2025-10-28','10:00:00','link/c12/s9'),(12,'Session 10','2025-11-04','10:00:00','link/c12/s10'),(12,'Session 11','2025-11-11','10:00:00','link/c12/s11'),(12,'Session 12','2025-11-18','10:00:00','link/c12/s12'),(12,'Session 13','2025-11-25','10:00:00','link/c12/s13');
 
--- Course 19 (Operating Systems) - Starts Wed (Sept 3)
-(19, 'Session 1', '2025-09-03', 'link/c19/s1'), (19, 'Session 2', '2025-09-10', 'link/c19/s2'), (19, 'Session 3', '2025-09-17', 'link/c19/s3'), (19, 'Session 4', '2025-09-24', 'link/c19/s4'), (19, 'Session 5', '2025-10-01', 'link/c19/s5'), (19, 'Session 6', '2025-10-08', 'link/c19/s6'), (19, 'Session 7', '2025-10-15', 'link/c19/s7'), (19, 'Session 8', '2025-10-22', 'link/c19/s8'), (19, 'Session 9', '2025-10-29', 'link/c19/s9'), (19, 'Session 10', '2025-11-05', 'link/c19/s10'), (19, 'Session 11', '2025-11-12', 'link/c19/s11'), (19, 'Session 12', '2025-11-19', 'link/c19/s12'), (19, 'Session 13', '2025-11-26', 'link/c19/s13'),
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(13,'Session 1','2025-09-03','13:00:00','link/c13/s1'),(13,'Session 2','2025-09-10','13:00:00','link/c13/s2'),(13,'Session 3','2025-09-17','13:00:00','link/c13/s3'),(13,'Session 4','2025-09-24','13:00:00','link/c13/s4'),(13,'Session 5','2025-10-01','13:00:00','link/c13/s5'),(13,'Session 6','2025-10-08','13:00:00','link/c13/s6'),(13,'Session 7','2025-10-15','13:00:00','link/c13/s7'),(13,'Session 8','2025-10-22','13:00:00','link/c13/s8'),(13,'Session 9','2025-10-29','13:00:00','link/c13/s9'),(13,'Session 10','2025-11-05','13:00:00','link/c13/s10'),(13,'Session 11','2025-11-12','13:00:00','link/c13/s11'),(13,'Session 12','2025-11-19','13:00:00','link/c13/s12'),(13,'Session 13','2025-11-26','13:00:00','link/c13/s13');
 
--- Course 20 (Professional Communication) - Starts Thu (Sept 4)
-(20, 'Session 1', '2025-09-04', 'link/c20/s1'), (20, 'Session 2', '2025-09-11', 'link/c20/s2'), (20, 'Session 3', '2025-09-18', 'link/c20/s3'), (20, 'Session 4', '2025-09-25', 'link/c20/s4'), (20, 'Session 5', '2025-10-02', 'link/c20/s5'), (20, 'Session 6', '2025-10-09', 'link/c20/s6'), (20, 'Session 7', '2025-10-16', 'link/c20/s7'), (20, 'Session 8', '2025-10-23', 'link/c20/s8'), (20, 'Session 9', '2025-10-30', 'link/c20/s9'), (20, 'Session 10', '2025-11-06', 'link/c20/s10'), (20, 'Session 11', '2025-11-13', 'link/c20/s11'), (20, 'Session 12', '2025-11-20', 'link/c20/s12'), (20, 'Session 13', '2025-11-27', 'link/c20/s13');
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(14,'Session 1','2025-09-04','15:00:00','link/c14/s1'),(14,'Session 2','2025-09-11','15:00:00','link/c14/s2'),(14,'Session 3','2025-09-18','15:00:00','link/c14/s3'),(14,'Session 4','2025-09-25','15:00:00','link/c14/s4'),(14,'Session 5','2025-10-02','15:00:00','link/c14/s5'),(14,'Session 6','2025-10-09','15:00:00','link/c14/s6'),(14,'Session 7','2025-10-16','15:00:00','link/c14/s7'),(14,'Session 8','2025-10-23','15:00:00','link/c14/s8'),(14,'Session 9','2025-10-30','15:00:00','link/c14/s9'),(14,'Session 10','2025-11-06','15:00:00','link/c14/s10'),(14,'Session 11','2025-11-13','15:00:00','link/c14/s11'),(14,'Session 12','2025-11-20','15:00:00','link/c14/s12'),(14,'Session 13','2025-11-27','15:00:00','link/c14/s13');
+
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(15,'Session 1','2025-09-05','09:00:00','link/c15/s1'),(15,'Session 2','2025-09-12','09:00:00','link/c15/s2'),(15,'Session 3','2025-09-19','09:00:00','link/c15/s3'),(15,'Session 4','2025-09-26','09:00:00','link/c15/s4'),(15,'Session 5','2025-10-03','09:00:00','link/c15/s5'),(15,'Session 6','2025-10-10','09:00:00','link/c15/s6'),(15,'Session 7','2025-10-17','09:00:00','link/c15/s7'),(15,'Session 8','2025-10-24','09:00:00','link/c15/s8'),(15,'Session 9','2025-10-31','09:00:00','link/c15/s9'),(15,'Session 10','2025-11-07','09:00:00','link/c15/s10'),(15,'Session 11','2025-11-14','09:00:00','link/c15/s11'),(15,'Session 12','2025-11-21','09:00:00','link/c15/s12'),(15,'Session 13','2025-11-28','09:00:00','link/c15/s13');
+
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(16,'Session 1','2025-09-01','08:00:00','link/c16/s1'),(16,'Session 2','2025-09-08','08:00:00','link/c16/s2'),(16,'Session 3','2025-09-15','08:00:00','link/c16/s3'),(16,'Session 4','2025-09-22','08:00:00','link/c16/s4'),(16,'Session 5','2025-09-29','08:00:00','link/c16/s5'),(16,'Session 6','2025-10-06','08:00:00','link/c16/s6'),(16,'Session 7','2025-10-13','08:00:00','link/c16/s7'),(16,'Session 8','2025-10-20','08:00:00','link/c16/s8'),(16,'Session 9','2025-10-27','08:00:00','link/c16/s9'),(16,'Session 10','2025-11-03','08:00:00','link/c16/s10'),(16,'Session 11','2025-11-10','08:00:00','link/c16/s11'),(16,'Session 12','2025-11-17','08:00:00','link/c16/s12'),(16,'Session 13','2025-11-24','08:00:00','link/c16/s13');
+
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(17,'Session 1','2025-09-02','10:00:00','link/c17/s1'),(17,'Session 2','2025-09-09','10:00:00','link/c17/s2'),(17,'Session 3','2025-09-16','10:00:00','link/c17/s3'),(17,'Session 4','2025-09-23','10:00:00','link/c17/s4'),(17,'Session 5','2025-09-30','10:00:00','link/c17/s5'),(17,'Session 6','2025-10-07','10:00:00','link/c17/s6'),(17,'Session 7','2025-10-14','10:00:00','link/c17/s7'),(17,'Session 8','2025-10-21','10:00:00','link/c17/s8'),(17,'Session 9','2025-10-28','10:00:00','link/c17/s9'),(17,'Session 10','2025-11-04','10:00:00','link/c17/s10'),(17,'Session 11','2025-11-11','10:00:00','link/c17/s11'),(17,'Session 12','2025-11-18','10:00:00','link/c17/s12'),(17,'Session 13','2025-11-25','10:00:00','link/c17/s13');
+
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(18,'Session 1','2025-09-03','13:00:00','link/c18/s1'),(18,'Session 2','2025-09-10','13:00:00','link/c18/s2'),(18,'Session 3','2025-09-17','13:00:00','link/c18/s3'),(18,'Session 4','2025-09-24','13:00:00','link/c18/s4'),(18,'Session 5','2025-10-01','13:00:00','link/c18/s5'),(18,'Session 6','2025-10-08','13:00:00','link/c18/s6'),(18,'Session 7','2025-10-15','13:00:00','link/c18/s7'),(18,'Session 8','2025-10-22','13:00:00','link/c18/s8'),(18,'Session 9','2025-10-29','13:00:00','link/c18/s9'),(18,'Session 10','2025-11-05','13:00:00','link/c18/s10'),(18,'Session 11','2025-11-12','13:00:00','link/c18/s11'),(18,'Session 12','2025-11-19','13:00:00','link/c18/s12'),(18,'Session 13','2025-11-26','13:00:00','link/c18/s13');
+
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(19,'Session 1','2025-09-04','15:00:00','link/c19/s1'),(19,'Session 2','2025-09-11','15:00:00','link/c19/s2'),(19,'Session 3','2025-09-18','15:00:00','link/c19/s3'),(19,'Session 4','2025-09-25','15:00:00','link/c19/s4'),(19,'Session 5','2025-10-02','15:00:00','link/c19/s5'),(19,'Session 6','2025-10-09','15:00:00','link/c19/s6'),(19,'Session 7','2025-10-16','15:00:00','link/c19/s7'),(19,'Session 8','2025-10-23','15:00:00','link/c19/s8'),(19,'Session 9','2025-10-30','15:00:00','link/c19/s9'),(19,'Session 10','2025-11-06','15:00:00','link/c19/s10'),(19,'Session 11','2025-11-13','15:00:00','link/c19/s11'),(19,'Session 12','2025-11-20','15:00:00','link/c19/s12'),(19,'Session 13','2025-11-27','15:00:00','link/c19/s13');
+
+INSERT INTO Session (courseID, sessionTitle, sessionDate, sessionTime, contentLink) VALUES
+(20,'Session 1','2025-09-05','09:00:00','link/c20/s1'),(20,'Session 2','2025-09-12','09:00:00','link/c20/s2'),(20,'Session 3','2025-09-19','09:00:00','link/c20/s3'),(20,'Session 4','2025-09-26','09:00:00','link/c20/s4'),(20,'Session 5','2025-10-03','09:00:00','link/c20/s5'),(20,'Session 6','2025-10-10','09:00:00','link/c20/s6'),(20,'Session 7','2025-10-17','09:00:00','link/c20/s7'),(20,'Session 8','2025-10-24','09:00:00','link/c20/s8'),(20,'Session 9','2025-10-31','09:00:00','link/c20/s9'),(20,'Session 10','2025-11-07','09:00:00','link/c20/s10'),(20,'Session 11','2025-11-14','09:00:00','link/c20/s11'),(20,'Session 12','2025-11-21','09:00:00','link/c20/s12'),(20,'Session 13','2025-11-28','09:00:00','link/c20/s13');
 
 
 INSERT INTO Enrollment (courseID, studentID, enrollmentDate) VALUES

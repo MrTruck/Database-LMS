@@ -1,7 +1,7 @@
 import streamlit as st
 from data import get_connection
 from auth import login_check
-from helper import heading, course_header
+from helper import heading, course_header, display_time_24h
 
 selected_course = st.session_state.get("selected_course")
 
@@ -56,13 +56,24 @@ course_header(course["courseID"], course["courseName"], course["instructorName"]
 # Fetch sessions
 # ----------------------------
 cursor.execute("""
-    SELECT sessionTitle, sessionDate, contentLink
+    SELECT sessionTitle, sessionDate, contentLink, sessionTime
     FROM Session
     WHERE courseID = %s
     ORDER BY sessionDate
 """, (course_id,))
 
 sessions = cursor.fetchall()
+
+if st.session_state.logged_in == "student":
+    enrolled_date_query = """
+        SELECT enrollmentDate FROM enrollment
+        WHERE courseID = %s
+        AND studentID = %s
+    """
+
+    cursor.execute(enrolled_date_query, (course_id, st.session_state.student_id,))
+    enrollment = cursor.fetchone()
+    st.caption("Enrolled on " + str(enrollment["enrollmentDate"]))
 
 cursor.close()
 conn.close()
@@ -72,12 +83,19 @@ conn.close()
 # ----------------------------
 st.subheader("Course Sessions")
 
-for s in sessions:
+
+for s_num, s in enumerate(sessions):
     with st.container(border=True):
+        st.caption(f"Session {s_num+1}")
         st.markdown(f"**{s['sessionTitle']}**")
-        st.caption(s['sessionDate'])
+        col1, col2, col3 = st.columns([2,2,8])
+        col1.caption(s['sessionDate'])
+        col2.caption(display_time_24h(s['sessionTime']))
+        col3.caption("")
         if s['contentLink']:
-            st.markdown(f"[Attatchments]({s['contentLink']})")
+            content_links = str(s["contentLink"]).split()
+            for link in content_links:
+                st.markdown(f"**[{link}]({link})**")
 
 # ----------------------------
 # Back button

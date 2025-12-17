@@ -62,11 +62,12 @@ CREATE TABLE Course (
 -- ENROLLMENT (many-to-many)
 -- ===============================
 CREATE TABLE Enrollment (
-    enrollmentID INT AUTO_INCREMENT PRIMARY KEY,
     courseID INT NOT NULL,
     studentID INT NOT NULL,
     enrollmentDate DATE DEFAULT (CURRENT_DATE),
-    
+
+    PRIMARY KEY (courseID, studentID),
+
     CONSTRAINT fk_enrollment_course
         FOREIGN KEY (courseID) REFERENCES Course(courseID)
         ON DELETE CASCADE
@@ -87,6 +88,7 @@ CREATE TABLE Session (
     courseID INT NOT NULL,
     sessionTitle VARCHAR(200) NOT NULL,
     sessionDate DATE NOT NULL,
+    sessionTime TIME NOT NULL,
     contentLink TEXT,
 
     FOREIGN KEY (courseID) REFERENCES Course(courseID)

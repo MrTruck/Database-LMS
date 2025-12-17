@@ -1,4 +1,3 @@
-import bcrypt
 import streamlit as st
 from data import get_connection
 
@@ -74,7 +73,7 @@ def initialize_role_id():
         cursor.execute(
             """
             SELECT 
-                studentID 
+                studentID, majorName, semester
             FROM 
                 student 
             WHERE 
@@ -84,11 +83,13 @@ def initialize_role_id():
         student = cursor.fetchone()
         if student:
             st.session_state.student_id = student["studentID"]
+            st.session_state.major = student["majorName"]
+            st.session_state.semester = student["semester"]
         
     elif (st.session_state.logged_in == 'instructor'):
         cursor.execute(
             """
-            SELECT instructorID FROM instructor
+            SELECT instructorID, department FROM instructor
             WHERE
                 userID = %s;
             """, (st.session_state.user_id,)
@@ -96,6 +97,7 @@ def initialize_role_id():
         instructor = cursor.fetchone()
         if instructor:
             st.session_state.instructor_id = instructor["instructorID"]
+            st.session_state.department = instructor["department"]
     
     cursor.close()
     conn.close()

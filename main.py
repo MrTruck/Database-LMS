@@ -1,5 +1,5 @@
 import streamlit as st
-from auth import verify_pass, login_check
+from auth import verify_pass
 
 
 
@@ -13,6 +13,9 @@ if "logged_in" not in st.session_state:
     st.session_state.instructor_id = None
     st.session_state.selected_course = None
     st.session_state.manage_course = None
+    st.session_state.major = None
+    st.session_state.semester = None
+    st.session_state.department = None
 
 
 def login():
@@ -38,6 +41,9 @@ def logout():
     st.session_state.instructor_id = None
     st.session_state.selected_course = None
     st.session_state.manage_course = None
+    st.session_state.major = None
+    st.session_state.semester = None
+    st.session_state.department = None
     st.rerun()
 
 
