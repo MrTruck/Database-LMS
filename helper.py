@@ -50,5 +50,4 @@ def display_time_24h(td):
 
     time_24hr = f"{hours:02d}:{minutes:02d}:{seconds:02d}"
 
-    print(f"Time (24hr): {time_24hr}")
     return time_24hr

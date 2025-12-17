@@ -48,9 +48,9 @@ for s_num, s in enumerate(course_sessions):
     with st.container(border=True):
         st.caption(f"Session {s_num+1}")
         st.markdown(f"**{s['sessionTitle']}**")
+
         col1, col2, col3 = st.columns([2,2,8])
         col1.caption(s['sessionDate'])
-        print(type(s['sessionTime']))
         col2.caption(display_time_24h(s['sessionTime']))
         col3.caption("")
 
@@ -65,7 +65,6 @@ for s_num, s in enumerate(course_sessions):
                 st.session_state[links_key] = []
 
         links = st.session_state[links_key]
-
 
         # ---------- EXISTING LINKS (FIXED) ----------
         for idx in range(len(links)):
