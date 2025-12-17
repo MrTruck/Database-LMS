@@ -2,6 +2,7 @@ import streamlit as st
 from data import get_connection
 from auth import login_check
 from helper import heading, course_header, display_time_24h
+from datetime import timedelta
 
 selected_course = st.session_state.get("selected_course")
 
@@ -88,9 +89,12 @@ for s_num, s in enumerate(sessions):
     with st.container(border=True):
         st.caption(f"Session {s_num+1}")
         st.markdown(f"**{s['sessionTitle']}**")
-        col1, col2, col3 = st.columns([2,2,8])
+        col1, col2, col3 = st.columns([2,4,6])
         col1.caption(s['sessionDate'])
-        col2.caption(display_time_24h(s['sessionTime']))
+        delta_time = s['sessionTime']
+        col2.caption(
+            f"{display_time_24h(delta_time)} - {display_time_24h(delta_time + timedelta(hours=2))}"
+        )
         col3.caption("")
         if s['contentLink']:
             content_links = str(s["contentLink"]).split()
