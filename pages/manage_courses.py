@@ -27,14 +27,12 @@ def get_instructor_courses():
 
     return courses
 
+st.set_page_config(page_title="Course Management", page_icon="📚")  # configure page title and icon
 
 # Page code starter
 login_check()
 verify_instructor()
 heading()
-
-st.set_page_config(page_title="Course Management", page_icon="📚")  # configure page title and icon
-
 
 for instructor_course in get_instructor_courses():
     row_col1, row_col2 = st.columns([3, 1])

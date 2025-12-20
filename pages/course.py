@@ -107,3 +107,34 @@ for s_num, s in enumerate(sessions):
 if st.button("← Back to Courses"):
     del st.session_state.selected_course
     st.switch_page("pages/courses.py")
+
+conn = get_connection()
+cursor = conn.cursor()
+
+
+
+# Fixed query with correct column name
+query = """
+    SELECT s.studentID, s.studentName
+    FROM enrollment e
+    JOIN student s ON e.studentID = s.studentID
+    WHERE e.courseID = %s
+    ORDER BY s.studentName
+"""
+
+cursor.execute(query, (st.session_state.selected_course,))
+students = cursor.fetchall()
+
+cursor.close()
+conn.close()
+
+st.metric("Total Enrolled Students", len(students))
+st.divider()
+
+# Display the student list
+if students:
+    st.subheader("Enrolled Students")
+    for student_id, student_name in students:
+        st.write(f"**ID:** {student_id} - **Name:** {student_name}")
+else:
+    st.info("No students enrolled in this course yet.")
