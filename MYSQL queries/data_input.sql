@@ -104,38 +104,38 @@ INSERT INTO User (email, password, fullName, role) VALUES
 
 -- Insert 20 University Courses (Using modern syntax instead of VALUES())
 
-INSERT INTO Course (courseID, courseName, instructorID, userID) VALUES
+INSERT INTO Course (courseID, courseName, instructorID) VALUES
 -- Courses 1-5
-(1, 'Database Management Systems', 1, 80),
-(2, 'Advanced Web Programming', 1, 80),
-(3, 'Data Structures and Algorithms', 2, 81),
-(4, 'Introduction to Calculus', 2, 81),
-(5, 'Applied Physics I', 3, 82),
+(1, 'Database Management Systems', 1),
+(2, 'Advanced Web Programming', 1),
+(3, 'Data Structures and Algorithms', 2),
+(4, 'Introduction to Calculus', 2),
+(5, 'Applied Physics I', 3),
 
 -- Courses 6-10
-(6, 'Principles of Microeconomics', 3, 82),
-(7, 'Organic Chemistry Lab', 4, 83),
-(8, 'Modern European History', 4, 83),
-(9, 'Linear Algebra', 1, 80),
-(10, 'Software Engineering Principles', 2, 81),
+(6, 'Principles of Microeconomics', 3),
+(7, 'Organic Chemistry Lab', 4),
+(8, 'Modern European History', 4),
+(9, 'Linear Algebra', 1),
+(10, 'Software Engineering Principles', 2),
 
 -- Courses 11-15
-(11, 'Introductory Psychology', 3, 82),
-(12, 'Art History Survey', 4, 83),
-(13, 'Digital Logic Design', 1, 80),
-(14, 'Network Security Fundamentals', 2, 81),
-(15, 'Creative Writing Workshop', 3, 82),
+(11, 'Introductory Psychology', 3),
+(12, 'Art History Survey', 4),
+(13, 'Digital Logic Design', 1),
+(14, 'Network Security Fundamentals', 2),
+(15, 'Creative Writing Workshop', 3),
 
 -- Courses 16-20
-(16, 'Environmental Science', 4, 83),
-(17, 'Introduction to Philosophy', 1, 80),
-(18, 'Game Theory', 2, 81),
-(19, 'Operating Systems', 3, 82),
-(20, 'Professional Communication', 4, 83)
+(16, 'Environmental Science', 4),
+(17, 'Introduction to Philosophy', 1),
+(18, 'Game Theory', 2),
+(19, 'Operating Systems', 3),
+(20, 'Professional Communication', 4)
 ON DUPLICATE KEY UPDATE
-    courseName = courseName,  -- Replaces VALUES(courseName)
-    instructorID = instructorID,
-    userID = userID;
+    courseName = courseName,
+    instructorID = instructorID;
+
     
 INSERT INTO Enrollment (courseID, studentID) VALUES
 (1,1),(2,1),(3,1),(4,1),(5,1),

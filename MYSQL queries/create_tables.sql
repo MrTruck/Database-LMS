@@ -47,7 +47,6 @@ CREATE TABLE Course (
     courseID INT AUTO_INCREMENT PRIMARY KEY,
     courseName VARCHAR(100) NOT NULL,
     instructorID INT NOT NULL,
-    userID INT NOT NULL,
 
     FOREIGN KEY (instructorID) REFERENCES Instructor(instructorID)
         ON DELETE CASCADE
