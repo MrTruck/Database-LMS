@@ -50,10 +50,6 @@ CREATE TABLE Course (
 
     FOREIGN KEY (instructorID) REFERENCES Instructor(instructorID)
         ON DELETE CASCADE
-        ON UPDATE CASCADE,
-
-    FOREIGN KEY (userID) REFERENCES User(userID)
-        ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
